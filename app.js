@@ -108,6 +108,9 @@ io.on("connection", function(socket) {
               case "california roll":
                 socket.emit("food_response", "california roll");
                 break;
+              case "saltine":
+                socket.emit("food_response", "galleta de soda");
+                break;
               case "non food":
                 socket.emit("food_response", "no es un alimento");
                 break;
