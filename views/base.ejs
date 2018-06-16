@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= title %></title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="client/materialize-css/dist/css/materialize.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+    <script src="/socket.io/socket.io.js" charset="utf-8"></script>
+
+  </head>
+  <body>
+    <%- include("partials/home/navbar") -%>
+    <%- include("partials/home/canvas") -%>
+    <%- include("partials/home/modal") -%>
+
+    <script src="client/jquery/dist/jquery.min.js" charset="utf-8"></script>
+    <script src="client/materialize-css/dist/js/materialize.min.js" charset="utf-8"></script>
+    <script src="client/handlebars/dist/handlebars.min.js" charset="utf-8"></script>
+
+    <script src="/javascripts/init.js" charset="utf-8"></script>
+    <script src="/javascripts/video.js" charset="utf-8"></script>
+    <script src="/javascripts/getrecipe.js" charset="utf-8"></script>
+
+    <script id="recipes-list" type="text/x-handlebars-template">
+      {{#each objects}}
+      <li class="collection-item avatar">
+        <img src="{{ recipe.image }}" alt="recipe-image" class="circle">
+        <span class="title">{{ recipe.label }}</span>
+        <p>Calorias: {{ recipe.calories }} kcal<br>
+          Grasas Totales: {{ recipe.totalWeight }} g
+        </p>
+        <a href="{{ recipe.url }}" target="_blank" class="secondary-content"><i class="material-icons">link</i></a>
+      </li>
+      {{/each}}
+    </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+body {
+  overflow-y: hidden;
+}
+
+.navbar {
+  z-index: 9999;
+}
+
+.videoContainer {
+    position:absolute;
+    height:100%;
+    width:100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.videoContainer #webcamfeed, {
+  min-width: 100%;
+  min-height: 100%;
+}
+
+#app {
+  z-index: 9999;
+  top: 10px;
+}
+
+.takephoto {
+  margin-top: 60vh;
+}
+
+.progress {
+  margin: 0px;
+  display: none;
+}
