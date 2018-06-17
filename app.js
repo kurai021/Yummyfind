@@ -118,6 +118,12 @@ io.on("connection", function(socket) {
               case "pico de gallo":
                 socket.emit("food_response", "pico de gallo");
                 break;
+              case "donuts":
+                socket.emit("food_response", "donas");
+                break;
+              case "asparagus":
+                socket.emit("food_response", "esparragos");
+                break;
               case "non food":
                 socket.emit("food_response", "no es un alimento");
                 break;
