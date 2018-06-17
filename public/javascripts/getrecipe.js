@@ -33,6 +33,7 @@ socket.on("food_response", function(data){
     dismissible: false
   });
   $('.progress').hide();
+  $('#takePhoto').removeClass("disabled");
   modal_recipe.open();
 
 });

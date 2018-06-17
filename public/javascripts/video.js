@@ -17,6 +17,7 @@ takePhoto.ontouchend = function(){
   socket.emit("food", base64result);
 
   $('.progress').show();
+  $('#takePhoto').addClass("disabled");
 };
 
 window.onload = function(){
