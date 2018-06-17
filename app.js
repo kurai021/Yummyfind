@@ -10,17 +10,17 @@ var users = require('./routes/users');
 
 var fs = require('fs');
 
-/*var options = {
+var options = {
   key: fs.readFileSync('server.key'),
   cert: fs.readFileSync('server.crt'),
   requestCert: false,
   rejectUnauthorized: false
-};*/
+};
 
 var app = express();
 
-//var server = require('https').Server(options, app);
-var server = require('http').Server(app);
+var server = require('https').Server(options, app);
+//var server = require('http').Server(app);
 var io = require("socket.io")(server);
 
 var VisualRecognitionV3 = require('watson-developer-cloud/visual-recognition/v3');
@@ -114,6 +114,9 @@ io.on("connection", function(socket) {
                 break;
               case "crackers":
                 socket.emit("food_response", "galleta");
+                break;
+              case "pico de gallo":
+                socket.emit("food_response", "pico de gallo");
                 break;
               case "non food":
                 socket.emit("food_response", "no es un alimento");

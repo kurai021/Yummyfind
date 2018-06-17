@@ -30,8 +30,8 @@
       <li class="collection-item avatar">
         <img src="{{ recipe.image }}" alt="recipe-image" class="circle">
         <span class="title">{{ recipe.label }}</span>
-        <p>Calorias: {{ recipe.calories }} kcal<br>
-          Grasas Totales: {{ recipe.totalWeight }} g
+        <p>Calorias: {{#integer}}{{ recipe.calories }}{{/integer}} kcal<br>
+          Grasas Totales: {{#integer}}{{ recipe.totalWeight }}{{/integer}} g
         </p>
         <a href="{{ recipe.url }}" target="_blank" class="secondary-content"><i class="material-icons">link</i></a>
       </li>

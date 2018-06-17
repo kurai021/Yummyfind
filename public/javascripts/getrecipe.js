@@ -25,13 +25,15 @@ socket.on("food_response", function(data){
   });
 
   Handlebars.registerHelper('integer', function(options){
-    return Number(options.fn(this)).parseInt;
+    var value = Number(options.fn(this));
+    return Math.round(value);
   })
 
   var modal = $('.modal');
   var modal_recipe = M.Modal.getInstance(modal, {
     dismissible: false
   });
+
   $('.progress').hide();
   $('#takePhoto').removeClass("disabled");
   modal_recipe.open();
