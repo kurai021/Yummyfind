@@ -1,7 +1,11 @@
 var cacheName = 'hello-world-page';
 var filesToCache = [
   '/',
+  'client/materialize-css/dist/css/materialize.min.css',
   '/stylesheets/style.css',
+  'client/jquery/dist/jquery.min.js',
+  'client/materialize-css/dist/js/materialize.min.js',
+  'client/handlebars/dist/handlebars.min.js',
   '/javascripts/init.js',
   '/javascripts/video.js',
   '/javascripts/getrecipe.js',
