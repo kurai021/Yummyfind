@@ -37,5 +37,13 @@
       </li>
       {{/each}}
     </script>
+    <script type="text/javascript">
+    if('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/javascripts/sw.js')
+        .then(function() {
+          console.log('Service Worker Registered');
+        });
+      }
+    </script>
   </body>
 </html>

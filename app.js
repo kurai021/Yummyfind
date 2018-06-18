@@ -10,17 +10,17 @@ var users = require('./routes/users');
 
 var fs = require('fs');
 
-/*var options = {
+var options = {
   key: fs.readFileSync('server.key'),
   cert: fs.readFileSync('server.crt'),
   requestCert: false,
   rejectUnauthorized: false
-};*/
+};
 
 var app = express();
 
-//var server = require('https').Server(options, app);
-var server = require('http').Server(app);
+var server = require('https').Server(options, app);
+//var server = require('http').Server(app);
 var io = require("socket.io")(server);
 
 var VisualRecognitionV3 = require('watson-developer-cloud/visual-recognition/v3');
