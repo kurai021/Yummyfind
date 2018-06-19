@@ -10,21 +10,20 @@ var users = require('./routes/users');
 
 var fs = require('fs');
 
-var options = {
+/*var options = {
   key: fs.readFileSync('server.key'),
   cert: fs.readFileSync('server.crt'),
   requestCert: false,
   rejectUnauthorized: false
-};
+};*/
 
 var app = express();
 
-var server = require('https').Server(options, app);
-//var server = require('http').Server(app);
+//var server = require('https').Server(options, app);
+var server = require('http').Server(app);
 var io = require("socket.io")(server);
 
 var VisualRecognitionV3 = require('watson-developer-cloud/visual-recognition/v3');
-//var LanguageTranslatorV2 = require('watson-developer-cloud/language-translator/v2');
 const {translate} = require('deepl-translator');
 
 // view engine setup
@@ -75,7 +74,6 @@ io.on("connection", function(socket) {
 
     var classifier_ids = ["food"];
     var foodRecognition = new VisualRecognitionV3({iam_apikey: "wGzSoa7OKxMHlhohXCF3CVkl74AS6eXBPU5fcoWGG9oU", url: "https://gateway.watsonplatform.net/visual-recognition/api", version: '2018-03-19'});
-    //var languageTranslator = new LanguageTranslatorV2({"url": "https://gateway.watsonplatform.net/language-translator/api", "username": "862fde39-3eb1-4eef-895e-f5f764720059", "password": "lWJeDyNJctFA"});
 
     var paramsFoodRecognition = {
       images_file: fs.createReadStream('./' + socket.id + '.png'),
@@ -114,55 +112,6 @@ io.on("connection", function(socket) {
               break;
           }
         }).catch(console.error);
-
-        /*translate(en_food, 'ES', 'EN')
-          .then(res => console.log(`Translation: ${res.translation}`))
-          .catch(console.error);*/
-
-        /*var paramsTranslator = {
-          text: en_food,
-          model_id: 'en-es'
-        };*/
-
-        /*languageTranslator.translate(paramsTranslator, function(err, res) {
-          if (err) {
-            console.log(err);
-          }
-          else {
-            switch(en_food){
-              case "lasagna":
-                socket.emit("food_response", "lasaña");
-                break;
-              case "california roll":
-                socket.emit("food_response", "california roll");
-                break;
-              case "saltine":
-                socket.emit("food_response", "galleta de soda");
-                break;
-              case "crackers":
-                socket.emit("food_response", "galleta");
-                break;
-              case "pico de gallo":
-                socket.emit("food_response", "pico de gallo");
-                break;
-              case "donuts":
-                socket.emit("food_response", "donas");
-                break;
-              case "asparagus":
-                socket.emit("food_response", "esparragos");
-                break;
-              case "non food":
-                socket.emit("food_response", "no es un alimento");
-                break;
-              default:
-                es_food = res.translations[0].translation;
-                socket.emit("food_response", es_food);
-                break;
-            }
-
-          }
-        });*/
-
 
       }
 
