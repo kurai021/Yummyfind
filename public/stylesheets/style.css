@@ -38,3 +38,18 @@ body {
   margin: 0px;
   display: none;
 }
+
+
+/*modal content */
+.modal.bottom-sheet {
+  max-height: 75%;
+}
+
+#recipes_container ul:not(.browser-default) {
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+#recipes_container ul:not(.browser-default)>li {
+  list-style-type: circle;
+}

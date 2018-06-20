@@ -5,7 +5,7 @@ socket.on("food_response", function(data){
   $('#recipe .modal-content h4').html(data);
 
   $.ajax({
-    url: "https://cors-anywhere.herokuapp.com/https://test-es.edamam.com/search?q=+" + data + "+&app_id=" + app_id + "&app_key=" + app_key,
+    url: "https://cors-anywhere.herokuapp.com/https://test-es.edamam.com/search?q=" + data + "&app_id=" + app_id + "&app_key=" + app_key,
     type: "GET",
     datatype: "application/json; charset=utf-8",
     success: function(res){
