@@ -1,6 +1,7 @@
-var cacheName = 'hello-world-page';
+var cacheName = 'YummyFind';
 var filesToCache = [
   '/',
+  'https://fonts.googleapis.com/icon?family=Material+Icons',
   'client/materialize-css/dist/css/materialize.min.css',
   '/stylesheets/style.css',
   'client/jquery/dist/jquery.min.js',

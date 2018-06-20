@@ -1,3 +1,5 @@
+var mediaSource = new MediaSource();
+
 var video = document.getElementById("webcamfeed"); //the video
 var takePhoto = document.getElementById("takePhoto"); //the button
 var photosource = document.getElementById("photo-source"); //the canvas
@@ -31,14 +33,14 @@ window.onload = function(){
   };
   console.log(param);
 
-  navigator.mediaDevices.getUserMedia(param).then(function(stream){
-    if (window.URL) {
-      video.src = window.URL.createObjectURL(stream); //deprecated soon
-    } else {
-      video.src = stream;
+  navigator.mediaDevices.getUserMedia(param)
+  .then(function(stream){
+    video.srcObject = stream;
+    video.onloadedmetadata = function(e) {
       video.play();
     };
-  }, function(err){
+  })
+  .catch(function(err){
     console.log(err);
   });
 
