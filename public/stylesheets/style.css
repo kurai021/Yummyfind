@@ -6,6 +6,13 @@
 
 body {
   overflow-y: hidden;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
 }
 
 .navbar {
@@ -13,32 +20,32 @@ body {
 }
 
 .videoContainer {
-    position:absolute;
-    height:100%;
-    width:100%;
-    overflow: hidden;
-    z-index: -1;
+  position:absolute;
+  height:100%;
+  width:100%;
+  overflow: hidden;
+  z-index: -1;
 }
 
-.videoContainer #webcamfeed, {
+.videoContainer #webcamfeed {
   min-width: 100%;
   min-height: 100%;
 }
 
-#app {
-  z-index: 9999;
-  top: 10px;
+.takephoto {
+  padding-top: 50vh;
+  position: absolute;
+  left: 50%;
 }
 
-.takephoto {
-  margin-top: 60vh;
+.takephoto a {
+  left: -50%;
 }
 
 .progress {
   margin: 0px;
   display: none;
 }
-
 
 /*modal content */
 .modal.bottom-sheet {

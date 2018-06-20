@@ -31,17 +31,38 @@ window.onload = function(){
       facingMode:{ideal: "environment"}
     }
   };
-  console.log(param);
 
   navigator.mediaDevices.getUserMedia(param)
-  .then(function(stream){
+  .then(async stream => {
     video.srcObject = stream;
-    video.onloadedmetadata = function(e) {
-      video.play();
-    };
+    await sleep(1000);
+
+    var track = stream.getVideoTracks()[0];
+    var capabilities = track.getCapabilities();
+    var settings = track.getSettings();
+
+    var zoom_control = document.querySelector('input[type="range"]');
+
+    if (!('zoom' in capabilities)) {
+      return Promise.reject('Zoom is not supported by ' + track.label);
+    }
+
+    // Map zoom to a slider element.
+    zoom_control.min = capabilities.zoom.min;
+    zoom_control.max = capabilities.zoom.max;
+    zoom_control.step = capabilities.zoom.step;
+    zoom_control.value = settings.zoom;
+
+    zoom_control.oninput = function(event) {
+      track.applyConstraints({advanced: [ {zoom: event.target.value} ]});
+    }
   })
-  .catch(function(err){
+  .catch(err =>{
     console.log(err);
   });
 
+}
+
+function sleep(ms = 0) {
+  return new Promise(r => setTimeout(r, ms));
 }
