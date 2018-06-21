@@ -23,6 +23,7 @@ takePhoto.ontouchend = function(){
 };
 
 window.onload = function(){
+  $('.tabs').tabs();
   $('.modal').modal();
 
   var param = {

@@ -33,18 +33,29 @@ main {
 }
 
 .takephoto {
-  padding-top: 50vh;
-  position: absolute;
-  left: 50%;
-}
-
-.takephoto a {
-  left: -50%;
+  text-align: center;
 }
 
 .progress {
   margin: 0px;
   display: none;
+}
+
+.tabs {
+  background: rgba(255,255,255,0);
+  height: 30px;
+}
+
+.tabs .tab {
+  line-height: 25px;
+}
+
+.tabs .tab a {
+  font-size: 12px;
+}
+
+#cameraoption, #searchoption {
+  margin-top: 20px;
 }
 
 /*modal content */

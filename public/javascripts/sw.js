@@ -9,7 +9,8 @@ var filesToCache = [
   'client/handlebars/dist/handlebars.min.js',
   '/javascripts/init.js',
   '/javascripts/video.js',
-  '/javascripts/getrecipe.js',
+  '/javascripts/getrecipe-socket.js',
+  '/javascripts/getrecipe-form.js'
 ];
 
 self.addEventListener('install', function(e) {

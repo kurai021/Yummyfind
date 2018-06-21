@@ -1,6 +1,3 @@
-var app_id = "0fff2101";
-var app_key = "bd0bfdcb16a04cbedd6edb90bb76965f";
-
 socket.on("food_response", function(data){
   $('#recipe .modal-content h4').html(data);
 
@@ -36,6 +33,7 @@ socket.on("food_response", function(data){
 
   $('.progress').hide();
   $('#takePhoto').removeClass("disabled");
+
   modal_recipe.open();
 
 });

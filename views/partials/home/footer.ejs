@@ -1,13 +1,29 @@
-<footer class="page-footer red darken-2">
-  <div class="container">
-    <div class="row">
-      <div class="col l12 s12">
-        <form action="#">
-          <p class="range-field">
-            <input type="range" />
-          </p>
-        </form>
-      </div>
+<div class="container">
+  <div class="row">
+    <div class="col l12 s12">
+      <ul class="tabs">
+        <li class="tab col l6 s6"><a class="active" href="#cameraoption">Cámara</a></li>
+        <li class="tab col l6 s6"><a href="#searchoption">Buscar</a></li>
+      </ul>
     </div>
+
+    <div id="cameraoption" class="col s12">
+      <p class="takephoto">
+        <a id="takePhoto" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">photo_camera</i></a>
+      </p>
+    </div>
+
+    <div id="searchoption" class="col s12">
+      <nav>
+        <div class="nav-wrapper">
+          <div class="input-field">
+            <input id="search" type="search" required>
+            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+            <i class="material-icons">close</i>
+          </div>
+        </div>
+      </nav>
+    </div>
+
   </div>
-</footer>
+</div>
