@@ -23,8 +23,6 @@ takePhoto.ontouchend = function(){
 };
 
 window.onload = function(){
-  $('.tabs').tabs();
-  $('.modal').modal();
 
   var param = {
     audio:false,
@@ -56,6 +54,7 @@ window.onload = function(){
 
     zoom_control.oninput = function(event) {
       track.applyConstraints({advanced: [ {zoom: event.target.value} ]});
+
     }
   })
   .catch(err =>{

@@ -36,9 +36,21 @@ main {
   text-align: center;
 }
 
+.takephoto .btn-floating {
+  border: 3px solid rgba(0,0,0,0.7);
+}
+
+.takephoto .btn-floating i {
+  color: #d32f2f;
+}
+
 .progress {
   margin: 0px;
   display: none;
+}
+
+.grey.darken-4-custom {
+  background-color: rgba(33,33,33,0.65) !important;
 }
 
 .tabs {
@@ -52,6 +64,14 @@ main {
 
 .tabs .tab a {
   font-size: 12px;
+}
+
+.tabs .tab a, .tabs .tab a:focus, .tabs .tab a:focus.active, .tabs .tab a.active {
+  color: #ffffff;
+}
+
+.tabs .indicator {
+  background-color: #d32f2f;
 }
 
 #cameraoption, #searchoption {
