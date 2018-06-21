@@ -38,11 +38,11 @@ main {
 
 .takephoto .btn-floating {
   border: 3px solid rgba(0,0,0,0.7);
-  padding-right: 5px;
 }
 
 .takephoto .btn-floating i {
   color: #d32f2f;
+  padding-right: 5px;
 }
 
 .progress {
