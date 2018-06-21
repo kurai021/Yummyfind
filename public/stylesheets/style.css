@@ -37,7 +37,7 @@ main {
 }
 
 .takephoto .btn-floating {
-  outline: 3px solid rgba(0,0,0,0.7);
+  box-shadow: 0 0 3pt 3pt rgba(0,0,0,0.7);
 }
 
 .takephoto .btn-floating i {
