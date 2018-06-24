@@ -14,18 +14,32 @@ var filesToCache = [
   '/javascripts/getrecipe-form.js'
 ];
 
-var isTooSoon = true;
-self.addEventListener("beforeinstallprompt", function(e) {
-  if (isTooSoon) {
-    e.preventDefault(); // Prevents prompt display
-    // Prompt later instead:
-    setTimeout(function() {
-      isTooSoon = false;
-      e.prompt(); // Throws if called more than once or default not prevented
-    }, 10000);
-  }
-  // The event was re-dispatched in response to our request
-  // ...
+var installPromptEvent;
+
+self.addEventListener('beforeinstallprompt', function(e){
+  // Prevent Chrome <= 67 from automatically showing the prompt
+  event.preventDefault();
+  // Stash the event so it can be triggered later.
+  installPromptEvent = event;
+  // Update the install UI to notify the user app can be installed
+  document.querySelector('#install-button').disabled = false;
+});
+
+document.querySelector('#install-button').addEventListener('click', function(){
+  // Update the install UI to remove the install button
+  document.querySelector('#install-button').disabled = true;
+  // Show the modal add to home screen dialog
+  installPromptEvent.prompt();
+  // Wait for the user to respond to the prompt
+  installPromptEvent.userChoice.then(function(choice) {
+    if (choice.outcome === 'accepted') {
+      console.log('User accepted the A2HS prompt');
+    } else {
+      console.log('User dismissed the A2HS prompt');
+    }
+    // Clear the saved prompt since it can't be used again
+    installPromptEvent = null;
+  });
 });
 
 self.addEventListener('install', function(e) {
