@@ -19,8 +19,8 @@ var options = {
 
 var app = express();
 
-var server = require('https').Server(options, app);
-//var server = require('http').Server(app);
+//var server = require('https').Server(options, app);
+var server = require('http').Server(app);
 var io = require("socket.io")(server);
 
 var VisualRecognitionV3 = require('watson-developer-cloud/visual-recognition/v3');
@@ -43,11 +43,11 @@ app.use('/', index);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+/*app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
-});
+});*/
 
 // error handler
 app.use(function(err, req, res, next) {
