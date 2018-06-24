@@ -65,6 +65,8 @@
       navigator.serviceWorker.register('/javascripts/sw.js')
         .then(function() {
           console.log('Service Worker Registered');
+        }).catch(function(err) {
+          console.log("No it didn't. This happened: ", err)
         });
       }
     </script>

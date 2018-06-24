@@ -7,6 +7,7 @@ var filesToCache = [
   'client/jquery/dist/jquery.min.js',
   'client/materialize-css/dist/js/materialize.min.js',
   'client/handlebars/dist/handlebars.min.js',
+  '/socket.io/socket.io.js',
   '/javascripts/init.js',
   '/javascripts/video.js',
   '/javascripts/getrecipe-socket.js',
