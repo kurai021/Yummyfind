@@ -14,6 +14,20 @@ var filesToCache = [
   '/javascripts/getrecipe-form.js'
 ];
 
+var isTooSoon = true;
+self.addEventListener("beforeinstallprompt", function(e) {
+  if (isTooSoon) {
+    e.preventDefault(); // Prevents prompt display
+    // Prompt later instead:
+    setTimeout(function() {
+      isTooSoon = false;
+      e.prompt(); // Throws if called more than once or default not prevented
+    }, 10000);
+  }
+  // The event was re-dispatched in response to our request
+  // ...
+});
+
 self.addEventListener('install', function(e) {
   console.log('[ServiceWorker] Install');
   e.waitUntil(
