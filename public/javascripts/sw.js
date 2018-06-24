@@ -25,9 +25,9 @@ self.addEventListener('beforeinstallprompt', function(e){
   document.querySelector('#install-button').disabled = false;
 });
 
-document.querySelector('#install-button').addEventListener('click', function(){
+document.getElementById('install').addEventListener('click', function(){
   // Update the install UI to remove the install button
-  document.querySelector('#install-button').disabled = true;
+  document.getElementById('install').disabled = true;
   // Show the modal add to home screen dialog
   installPromptEvent.prompt();
   // Wait for the user to respond to the prompt
