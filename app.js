@@ -10,12 +10,12 @@ var users = require('./routes/users');
 
 var fs = require('fs');
 
-var options = {
+/*var options = {
   key: fs.readFileSync('server.key'),
   cert: fs.readFileSync('server.crt'),
   requestCert: false,
   rejectUnauthorized: false
-};
+};*/
 
 var app = express();
 
@@ -43,11 +43,11 @@ app.use('/', index);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
-/*app.use(function(req, res, next) {
+app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
-});*/
+});
 
 // error handler
 app.use(function(err, req, res, next) {
