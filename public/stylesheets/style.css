@@ -89,7 +89,7 @@ nav .nav-wrapper .brand-logo img {
 
 /*modal content */
 .modal.bottom-sheet {
-  max-height: 75%;
+  max-height: 85%;
 }
 
 #recipes_container ul:not(.browser-default) {
