@@ -19,6 +19,10 @@ main {
   z-index: 9999;
 }
 
+nav .nav-wrapper .brand-logo img {
+  height: 54px;
+}
+
 .videoContainer {
   position:absolute;
   height:100%;
@@ -41,7 +45,7 @@ main {
 }
 
 .takephoto .btn-floating i {
-  color: #d32f2f;
+  color: #8E151E;
   padding-right: 5px;
 }
 
@@ -52,6 +56,10 @@ main {
 
 .grey.darken-4-custom {
   background-color: rgba(33,33,33,0.65) !important;
+}
+
+.red.wine {
+  background-color: #8E151E !important;
 }
 
 .tabs {
@@ -72,7 +80,7 @@ main {
 }
 
 .tabs .indicator {
-  background-color: #d32f2f;
+  background-color: #8E151E;
 }
 
 #cameraoption, #searchoption {
