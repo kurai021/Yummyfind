@@ -10,17 +10,17 @@ var users = require('./routes/users');
 
 var fs = require('fs');
 
-/*var options = {
+var options = {
   key: fs.readFileSync('server.key'),
   cert: fs.readFileSync('server.crt'),
   requestCert: false,
   rejectUnauthorized: false
-};*/
+};
 
 var app = express();
 
-//var server = require('https').Server(options, app);
-var server = require('http').Server(app);
+var server = require('https').Server(options, app);
+//var server = require('http').Server(app);
 var io = require("socket.io")(server);
 
 var VisualRecognitionV3 = require('watson-developer-cloud/visual-recognition/v3');
@@ -115,6 +115,32 @@ io.on("connection", function(socket) {
 
     });
 
+  });
+
+  socket.on('calculateScoreForm', function(level){
+    var res;
+    if(level < 10){
+      res = Math.round(level*0.5);
+      console.log("form menor 10: " + level);
+    }
+    else {
+      res = Math.round(level*5);
+      console.log("form mayor 10: " + level);
+    }
+    socket.emit("resScoreForm", res);
+  });
+
+  socket.on('calculateScoreCamera', function(level){
+    var res;
+    if(level < 10){
+      res = Math.round(level);
+      console.log("camara menor 10");
+    }
+    else {
+      res = Math.round(level*10);
+      console.log("camara mayor 10");
+    }
+    socket.emit("resScoreCamera", res);
   });
 });
 

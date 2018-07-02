@@ -54,12 +54,30 @@ window.onload = function(){
 
     zoom_control.oninput = function(event) {
       track.applyConstraints({advanced: [ {zoom: event.target.value} ]});
-
     }
   })
   .catch(err =>{
     console.log(err);
   });
+
+  var navbarScore_source = $("#navbarScore").html();
+  var navbarScore_template = Handlebars.compile(navbarScore_source);
+  var scoreSidenav_context = {score: JSON.stringify(yummyfindscore.scorecard().score)}
+  var navbarScore = navbarScore_template(scoreSidenav_context);
+
+  var sidenavScore_source = $("#sidenavScore").html();
+  var sidenavScore_template = Handlebars.compile(sidenavScore_source);
+  var sidenavScore_context = {
+    level_status: yummyfindscore.scorecard().status,
+    level_quote: yummyfindscore.scorecard().quote
+  }
+  var sidenavScore = sidenavScore_template(sidenavScore_context);
+
+  var scoreSidenav_container = $("#sidenavScore_container");
+  scoreSidenav_container.html(sidenavScore);
+
+  var scoreNavbar_container = $("#navbarScore_container");
+  scoreNavbar_container.html(navbarScore);
 
 }
 

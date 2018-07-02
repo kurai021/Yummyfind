@@ -11,6 +11,12 @@ body {
   flex-direction: column;
 }
 
+.center-block {
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+}
+
 main {
   flex: 1 0 auto;
 }

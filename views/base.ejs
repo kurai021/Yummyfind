@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="theme-color" content="#791c23">
     <title><%= title %></title>
-    <meta name="description" content="Reconocimiento de alimentos y buscador de recetas de cocina ">
+    <meta name="description" content="Reconocimiento de alimentos y buscador de recetas de cocina">
     <link rel="manifest" href="/manifest/manifest.json">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="client/materialize-css/dist/css/materialize.min.css" media="screen,projection">
@@ -15,15 +15,19 @@
   </head>
   <body>
     <%- include("partials/home/navbar") -%>
+    <%- include("partials/home/sidenav") -%>
     <%- include("partials/home/canvas") -%>
     <%- include("partials/home/modal") -%>
     <%- include("partials/home/footer") -%>
 
     <script src="client/jquery/dist/jquery.min.js" charset="utf-8"></script>
     <script src="client/materialize-css/dist/js/materialize.min.js" charset="utf-8"></script>
+    <script src="client/localforage/dist/localforage.min.js" charset="utf-8"></script>
     <script src="client/handlebars/dist/handlebars.min.js" charset="utf-8"></script>
 
     <script src="/javascripts/init.js" charset="utf-8"></script>
+    <script src="/javascripts/score.js" charset="utf-8"></script>
+    <script src="/javascripts/gamification.js" charset="utf-8"></script>
     <script src="/javascripts/video.js" charset="utf-8"></script>
     <script src="/javascripts/getrecipe-socket.js" charset="utf-8"></script>
     <script src="/javascripts/getrecipe-form.js" charset="utf-8"></script>
@@ -60,13 +64,38 @@
       {{/each}}
     </script>
 
+    <script id="navbarScore" type="text/x-handlebars-template">
+      <li>
+        <a>
+          <span class="new badge red" data-badge-caption="pts">{{ score }}</span>
+        </a>
+      </li>
+    </script>
+
+    <script id="sidenavScore" type="text/x-handlebars-template">
+      <!--<div class="background">
+        <img src="{{ level_background }}">
+      </div>
+      <a href=""><img class="circle" src="{{ level_avatar }}"></a>-->
+
+      <div class="background">
+        <img src="/images/sidenav/512x512.png">
+      </div>
+      <a href="" class="center-block"><img class="circle" src="/images/sidenav/512x512.png"></a>
+      <a href=""><span class="white-text name">Nv: {{ level_status }}</span></a>
+      <a href=""><span class="white-text email">{{ level_quote }}</span></a>
+    </script>
+
     <script type="text/javascript">
-    if('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/javascripts/sw.js')
-        .then(function() {
-          console.log('Service Worker Registered');
-        }).catch(function(err) {
-          console.log("No it didn't. This happened: ", err)
+      //Add this below content to your HTML page, or add the js file to your page at the very top to register service worker
+      if (navigator.serviceWorker.controller) {
+        console.log('[PWA Builder] active service worker found, no need to register')
+      } else {
+        //Register the ServiceWorker
+        navigator.serviceWorker.register('/javascripts/sw.js', {
+          scope: './'
+        }).then(function(reg) {
+          console.log('Service worker has been registered for scope:'+ reg.scope);
         });
       }
     </script>
