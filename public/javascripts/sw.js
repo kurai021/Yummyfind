@@ -6,7 +6,16 @@ self.addEventListener('install', function(event) {
     fetch(offlinePage).then(function(response) {
       return caches.open('pwabuilder-offline').then(function(cache) {
         console.log('[PWA Builder] Cached offline page during Install'+ response.url);
-        return cache.put(offlinePage, response);
+        //return cache.put(offlinePage, response);
+        return cache.addAll(
+          [
+            '/offline',
+            '/client/materialize-css/dist/css/materialize.min.css',
+            '/stylesheets/style.css',
+            '/client/jquery/dist/jquery.min.js',
+            '/client/materialize-css/dist/js/materialize.min.js',
+            '/javascripts/init-offline.js'
+          ]
         );
       });
   }));
@@ -19,7 +28,7 @@ self.addEventListener('fetch', function(event) {
     fetch(event.request).catch(function(error) {
       console.error( '[PWA Builder] Network request Failed. Serving offline page ' + error );
       return caches.open('pwabuilder-offline').then(function(cache) {
-        return cache.match('/offline');
+        return cache.match('offline');
       });
     }
   ));
@@ -29,6 +38,15 @@ self.addEventListener('fetch', function(event) {
 self.addEventListener('refreshOffline', function(response) {
   return caches.open('pwabuilder-offline').then(function(cache) {
     console.log('[PWA Builder] Offline page updated from refreshOffline event: '+ response.url);
-    return cache.put(offlinePage, response);
+    //return cache.put('offlinePage', response);
+    return cache.addAll(
+      [
+        '/offline',
+        '/client/materialize-css/dist/css/materialize.min.css',
+        '/stylesheets/style.css',
+        '/client/jquery/dist/jquery.min.js',
+        '/client/materialize-css/dist/js/materialize.min.js',
+        '/javascripts/init-offline.js'
+      ]
   });
 });
