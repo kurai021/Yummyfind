@@ -48,5 +48,6 @@ self.addEventListener('refreshOffline', function(response) {
         '/client/materialize-css/dist/js/materialize.min.js',
         '/javascripts/init-offline.js'
       ]
+    );
   });
 });
