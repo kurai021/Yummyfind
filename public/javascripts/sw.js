@@ -1,53 +1,64 @@
-//This is the "Offline page" service worker
-//Install stage sets up the offline page in the cache and opens a new cache
-self.addEventListener('install', function(event) {
-  var offlinePage = new Request('/offline');
-  event.waitUntil(
-    fetch(offlinePage).then(function(response) {
-      return caches.open('pwabuilder-offline').then(function(cache) {
-        console.log('[PWA Builder] Cached offline page during Install'+ response.url);
-        //return cache.put(offlinePage, response);
-        return cache.addAll(
-          [
-            '/offline',
-            '/client/materialize-css/dist/css/materialize.min.css',
-            '/stylesheets/style.css',
-            '/client/jquery/dist/jquery.min.js',
-            '/client/materialize-css/dist/js/materialize.min.js',
-            '/javascripts/init-offline.js'
-          ]
-        );
-      });
-  }));
-});
+var cacheName = 'YummyFind';
+var filesToCache = [
+  '/',
+  'https://fonts.googleapis.com/icon?family=Material+Icons',
+  '/client/materialize-css/dist/css/materialize.min.css',
+  '/stylesheets/style.css',
+  '/client/jquery/dist/jquery.min.js',
+  '/client/materialize-css/dist/js/materialize.min.js',
+  '/client/handlebars/dist/handlebars.min.js',
+  '/socket.io/socket.io.js',
+  '/javascripts/init.js',
+  '/javascripts/video.js',
+  '/javascripts/getrecipe-socket.js',
+  '/javascripts/getrecipe-form.js'
+];
 
-//If any fetch fails, it will show the offline page.
-//Maybe this should be limited to HTML documents?
-self.addEventListener('fetch', function(event) {
-  event.respondWith(
-    fetch(event.request).catch(function(error) {
-      console.error( '[PWA Builder] Network request Failed. Serving offline page ' + error );
-      return caches.open('pwabuilder-offline').then(function(cache) {
-        return cache.match('offline');
-      });
-    }
-  ));
-});
+let deferredPrompt;
 
-//This is a event that can be fired from your page to tell the SW to update the offline page
-self.addEventListener('refreshOffline', function(response) {
-  return caches.open('pwabuilder-offline').then(function(cache) {
-    console.log('[PWA Builder] Offline page updated from refreshOffline event: '+ response.url);
-    //return cache.put('offlinePage', response);
-    return cache.addAll(
-      [
-        '/offline',
-        '/client/materialize-css/dist/css/materialize.min.css',
-        '/stylesheets/style.css',
-        '/client/jquery/dist/jquery.min.js',
-        '/client/materialize-css/dist/js/materialize.min.js',
-        '/javascripts/init-offline.js'
-      ]
-    );
+self.addEventListener('beforeinstallprompt', (e) => {
+  // Prevent Chrome 67 and earlier from automatically showing the prompt
+  e.preventDefault();
+  // Stash the event so it can be triggered later.
+  deferredPrompt = e;
+  btnAdd.style.display = 'block';
+
+  btnAdd.addEventListener('click', (e) => {
+  // hide our user interface that shows our A2HS button
+  btnAdd.style.display = 'none';
+  // Show the prompt
+  deferredPrompt.prompt();
+  // Wait for the user to respond to the prompt
+  deferredPrompt.userChoice
+    .then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the A2HS prompt');
+      } else {
+        console.log('User dismissed the A2HS prompt');
+      }
+      deferredPrompt = null;
+    });
   });
+});
+
+self.addEventListener('install', function(e) {
+  console.log('[ServiceWorker] Install');
+  e.waitUntil(
+    caches.open(cacheName).then(function(cache) {
+      console.log('[ServiceWorker] Caching app shell');
+      return cache.addAll(filesToCache);
+    })
+  );
+});
+
+self.addEventListener('activate',  event => {
+  event.waitUntil(self.clients.claim());
+});
+
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request, {ignoreSearch:true}).then(response => {
+      return response || fetch(event.request);
+    })
+  );
 });
