@@ -19,6 +19,7 @@ var compression = require('compression');
 };*/
 
 var app = express();
+app.use(compression());
 
 //var server = require('https').Server(options, app);
 var server = require('http').Server(app);
@@ -39,7 +40,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(compression());
 
 app.use('/', index);
 app.use('/users', users);
