@@ -9,18 +9,19 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 
 var fs = require('fs');
+var compression = require('compression');
 
-/*var options = {
+var options = {
   key: fs.readFileSync('server.key'),
   cert: fs.readFileSync('server.crt'),
   requestCert: false,
   rejectUnauthorized: false
-};*/
+};
 
 var app = express();
 
-//var server = require('https').Server(options, app);
-var server = require('http').Server(app);
+var server = require('https').Server(options, app);
+//var server = require('http').Server(app);
 var io = require("socket.io")(server);
 
 var VisualRecognitionV3 = require('watson-developer-cloud/visual-recognition/v3');
@@ -38,6 +39,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(compression());
 
 app.use('/', index);
 app.use('/users', users);
