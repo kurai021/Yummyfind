@@ -24,7 +24,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "/",
+  "start_url": "http://yummyfind.herokuapp.com/",
   "display": "standalone",
   "background_color": "#791c23",
   "theme_color": "#791c23"
