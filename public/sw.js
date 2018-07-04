@@ -11,7 +11,9 @@ const config = {
       '/javascripts/init.js',
       '/javascripts/video.js',
       '/javascripts/getrecipe-socket.js',
-      '/javascripts/getrecipe-form.js'
+      '/javascripts/getrecipe-form.js',
+      '/javascripts/score.js',
+      '/javascripts/gamification.js'
     ]
   },
   preCacheName = "precache-" + config.version,
