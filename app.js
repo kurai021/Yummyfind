@@ -10,6 +10,7 @@ var users = require('./routes/users');
 
 var fs = require('fs');
 var compression = require('compression');
+var enforce = require('express-sslify');
 
 /*var options = {
   key: fs.readFileSync('server.key'),
@@ -20,6 +21,7 @@ var compression = require('compression');
 
 var app = express();
 app.use(compression());
+app.use(enforce.HTTPS({ trustProtoHeader: true }))
 
 //var server = require('https').Server(options, app);
 var server = require('http').Server(app);
