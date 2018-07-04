@@ -28,7 +28,7 @@ var server = require('http').Server(app);
 var io = require("socket.io")(server);
 
 var VisualRecognitionV3 = require('watson-developer-cloud/visual-recognition/v3');
-const {translate} = require('deepl-translator');
+const translate = require('google-translate-api');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -94,8 +94,7 @@ io.on("connection", function(socket) {
 
       else {
         en_food = res.images[0].classifiers[0].classes[0].class.replace(/-/g, ' ');
-
-        translate(en_food, 'ES', 'EN').then(function (res) {
+        translate(en_food, {from: 'en', to: 'es'}).then(res => {
           switch(en_food){
             case "california roll":
               socket.emit("food_response", "california roll");
@@ -103,17 +102,16 @@ io.on("connection", function(socket) {
             case "saltine":
               socket.emit("food_response", "galleta de soda");
               break;
-            case "asparagus":
-              socket.emit("food_response", "esparragos");
-              break;
             case "non food":
               socket.emit("food_response", "no es un alimento");
               break;
             default:
-              socket.emit("food_response", res.translation);
+              socket.emit("food_response", res.text);
               break;
           }
-        }).catch(console.error);
+        }).catch(err => {
+          console.error(err);
+        });
 
       }
 
@@ -125,11 +123,9 @@ io.on("connection", function(socket) {
     var res;
     if(level < 10){
       res = Math.round(level*0.5);
-      console.log("form menor 10: " + level);
     }
     else {
       res = Math.round(level*5);
-      console.log("form mayor 10: " + level);
     }
     socket.emit("resScoreForm", res);
   });
@@ -138,11 +134,9 @@ io.on("connection", function(socket) {
     var res;
     if(level < 10){
       res = Math.round(level);
-      console.log("camara menor 10");
     }
     else {
       res = Math.round(level*10);
-      console.log("camara mayor 10");
     }
     socket.emit("resScoreCamera", res);
   });

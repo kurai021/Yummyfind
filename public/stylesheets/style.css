@@ -97,12 +97,3 @@ nav .nav-wrapper .brand-logo img {
 .modal.bottom-sheet {
   max-height: 85%;
 }
-
-#recipes_container ul:not(.browser-default) {
-  padding-left: 20px;
-  list-style-type: disc;
-}
-
-#recipes_container ul:not(.browser-default)>li {
-  list-style-type: circle;
-}
