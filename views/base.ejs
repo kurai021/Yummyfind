@@ -75,15 +75,10 @@
     </script>
 
     <script id="sidenavScore" type="text/x-handlebars-template">
-      <!--<div class="background">
-        <img src="{{ level_background }}">
-      </div>
-      <a href=""><img class="circle" src="{{ level_avatar }}"></a>-->
-
       <div class="background">
-        <img src="/images/sidenav/512x512.png" alt="YummyFind - Background User">
+        <img src="/images/background/background-yummyfind.svg" alt="YummyFind - Background User">
       </div>
-      <img class="circle" src="/images/sidenav/512x512.png" alt="YummyFind - Image User">
+      <img class="circle" src="{{ level_badge }}" alt="YummyFind - {{ level_status }}">
       <span class="white-text name">Nv: {{ level_status }}</span>
       <span class="white-text email">{{ level_quote }}</span>
     </script>

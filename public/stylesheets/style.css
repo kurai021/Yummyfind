@@ -30,9 +30,9 @@ nav .nav-wrapper .brand-logo img {
 }
 
 .videoContainer {
-  position:absolute;
-  height:100%;
-  width:100%;
+  position: absolute;
+  height: 100%;
+  width: 100%;
   overflow: hidden;
   z-index: -1;
 }
@@ -47,7 +47,7 @@ nav .nav-wrapper .brand-logo img {
 }
 
 .takephoto .btn-floating {
-  border: 3px solid rgba(0,0,0,0.7);
+  border: 3px solid rgba(0, 0, 0, 0.7);
 }
 
 .takephoto .btn-floating i {
@@ -61,7 +61,7 @@ nav .nav-wrapper .brand-logo img {
 }
 
 .grey.darken-4-custom {
-  background-color: rgba(33,33,33,0.65) !important;
+  background-color: rgba(33, 33, 33, 0.65) !important;
 }
 
 .red.wine {
@@ -69,7 +69,7 @@ nav .nav-wrapper .brand-logo img {
 }
 
 .tabs {
-  background: rgba(255,255,255,0);
+  background: rgba(255, 255, 255, 0);
   height: 30px;
 }
 
@@ -93,7 +93,19 @@ nav .nav-wrapper .brand-logo img {
   margin-top: 20px;
 }
 
+.sidenav .user-view .background img {
+  filter: brightness(50%);
+}
+
+.sidenav .user-view .circle {
+  width: 130px;
+  height: 130px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /*modal content */
+
 .modal.bottom-sheet {
   max-height: 85%;
 }
