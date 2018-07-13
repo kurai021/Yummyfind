@@ -49,7 +49,8 @@ socket.on("food_response", function(data){
     var sidenavScore_template = Handlebars.compile(sidenavScore_source);
     var sidenavScore_context = {
       level_status: yummyfindscore.scorecard().status,
-      level_quote: yummyfindscore.scorecard().quote
+      level_quote: yummyfindscore.scorecard().quote,
+      level_badge: yummyfindscore.scorecard().badge
     }
     var sidenavScore = sidenavScore_template(sidenavScore_context);
 
