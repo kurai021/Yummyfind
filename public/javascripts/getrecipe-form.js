@@ -39,6 +39,11 @@ function getrecipewithform(data){
     return Math.round(value);
   })
 
+  Handlebars.registerHelper('tohttps', function(options){
+    var value = options.fn(this).replace(/^http:\/\//i, 'https://');
+    return value;
+  })
+
   var modal = $('.modal');
   var modal_recipe = M.Modal.getInstance(modal, {
     dismissible: false

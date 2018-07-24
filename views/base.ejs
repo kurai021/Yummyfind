@@ -38,7 +38,7 @@
       {{#each objects}}
       <div class="card sticky-action">
         <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator" src="{{ recipe.image }}" alt="{{ recipe.label }}">
+          <img class="activator" src="{{#tohttps}}{{ recipe.image }}{{/tohttps}}" alt="{{ recipe.label }}">
         </div>
 
         <div class="card-content">
