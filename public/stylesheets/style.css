@@ -8,7 +8,6 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  overflow: hidden;
   position: relative;
 }
 
@@ -36,6 +35,7 @@ nav .nav-wrapper .brand-logo img {
   width: 100%;
   overflow: hidden;
   z-index: -1;
+  top: 0px;
 }
 
 .videoContainer #webcamfeed {
