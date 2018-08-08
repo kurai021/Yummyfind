@@ -5,10 +5,11 @@
 }
 
 body {
-  overflow-y: hidden;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  overflow: hidden;
+  position: relative;
 }
 
 .center-block {

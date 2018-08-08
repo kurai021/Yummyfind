@@ -13,8 +13,8 @@ var compression = require('compression');
 var enforce = require('express-sslify');
 
 /*var options = {
-  key: fs.readFileSync('server.key'),
-  cert: fs.readFileSync('server.crt'),
+  key: fs.readFileSync('test.key'),
+  cert: fs.readFileSync('test.crt'),
   requestCert: false,
   rejectUnauthorized: false
 };*/
