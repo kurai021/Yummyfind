@@ -110,3 +110,22 @@ nav .nav-wrapper .brand-logo img {
 .modal.bottom-sheet {
   max-height: 85%;
 }
+
+.btn-floating.halfway-fab {
+  top: 20px;
+}
+
+.card .card-image .chip-container {
+  top: 25px;
+  left: 14px;
+  position: absolute;
+}
+
+.card .card-image .chip-container .chip {
+  font-size: 12px;
+  height: 25px;
+  border-radius: 25px;
+  line-height: 25px;
+  background-color: #ffffff;
+  color: #000000;
+}

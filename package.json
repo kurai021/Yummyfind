@@ -11,6 +11,7 @@
     "cookie-parser": "~1.4.3",
     "crypto-js": "^3.1.9-1",
     "debug": "~2.6.9",
+    "dexie": "^2.0.4",
     "ejs": "~2.5.7",
     "express": "~4.16.0",
     "express-sslify": "^1.2.0",

@@ -1,97 +1,193 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8">
-    <base href="/">
-    <link rel="canonical" href="https://yummyfind.herokuapp.com">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="theme-color" content="#791c23">
-    <title><%= title %></title>
-    <meta name="description" content="Reconocimiento de alimentos y buscador de recetas de cocina">
-    <link rel="manifest" href="manifest.json">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" media="screen">
-    <link rel="stylesheet" href="client/materialize-css/dist/css/materialize.min.css" media="screen">
-    <link rel='stylesheet' href='/stylesheets/style.css' media="screen" />
-  </head>
-  <body>
-    <%- include("partials/home/navbar") -%>
-    <%- include("partials/home/sidenav") -%>
-    <%- include("partials/home/canvas") -%>
-    <%- include("partials/home/modal") -%>
-    <%- include("partials/home/footer") -%>
 
-    <script src="client/jquery/dist/jquery.min.js" charset="utf-8"></script>
-    <script src="client/materialize-css/dist/js/materialize.min.js" charset="utf-8"></script>
-    <script src="client/handlebars/dist/handlebars.min.js" charset="utf-8"></script>
-    <script src="/socket.io/socket.io.js" charset="utf-8"></script>
+<head>
+  <meta charset="UTF-8">
+  <base href="/">
+  <link rel="canonical" href="https://yummyfind.herokuapp.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#791c23">
+  <title>
+    <%= title %>
+  </title>
+  <meta name="description" content="Reconocimiento de alimentos y buscador de recetas de cocina">
+  <link rel="manifest" href="manifest.json">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" media="screen">
+  <link rel="stylesheet" href="client/materialize-css/dist/css/materialize.min.css" media="screen">
+  <link rel='stylesheet' href='/stylesheets/style.css' media="screen" />
+</head>
 
-    <script src="/javascripts/init.js" charset="utf-8"></script>
-    <script src="/javascripts/score.js" charset="utf-8"></script>
-    <script src="/javascripts/gamification.js" charset="utf-8"></script>
-    <script src="/javascripts/video.js" charset="utf-8"></script>
-    <script src="/javascripts/getrecipe-socket.js" charset="utf-8"></script>
-    <script src="/javascripts/getrecipe-form.js" charset="utf-8"></script>
+<body>
+  <%- include("partials/home/navbar") -%>
+  <%- include("partials/home/sidenav") -%>
+  <%- include("partials/home/canvas") -%>
+  <%- include("partials/home/modal") -%>
+  <%- include("partials/home/footer") -%>
 
-    <script id="recipes-list" type="text/x-handlebars-template">
-      {{#each objects}}
-      <div class="card sticky-action">
-        <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator" src="{{#tohttps}}{{ recipe.image }}{{/tohttps}}" alt="{{ recipe.label }}">
-        </div>
+            <script src="client/jquery/dist/jquery.min.js" charset="utf-8"></script>
+            <script src="client/materialize-css/dist/js/materialize.min.js" charset="utf-8"></script>
+            <script src="client/handlebars/dist/handlebars.min.js" charset="utf-8"></script>
+            <script src="client/dexie/dist/dexie.min.js" charset="utf-8"></script>
+            <script src="/socket.io/socket.io.js" charset="utf-8"></script>
 
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">{{ recipe.label }}<i class="material-icons right">more_vert</i></span>
-        </div>
+            <script src="/javascripts/init.js" charset="utf-8"></script>
+            <script src="/javascripts/score.js" charset="utf-8"></script>
+            <script src="/javascripts/gamification.js" charset="utf-8"></script>
+            <script src="/javascripts/video.js" charset="utf-8"></script>
+            <script src="/javascripts/getrecipe-socket.js" charset="utf-8"></script>
+            <script src="/javascripts/getrecipe-form.js" charset="utf-8"></script>
+            <script src="/javascripts/favorite.js" charset="utf-8"></script>
 
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Ingredientes<i class="material-icons right">close</i></span>
-          <ul class="collection">
-            {{#each recipe.ingredientLines}}
-            <li class="collection-item">{{this}}</li>
-            {{/each}}
-          </ul>
-          <br>
-          <p>
-            <strong>Calorias:</strong> {{#integer}}{{ recipe.calories }}{{/integer}} kcal<br>
-            <strong>Grasas Totales:</strong> {{#integer}}{{ recipe.totalWeight }}{{/integer}} g
-          </p>
-        </div>
+            <script id="recipes-list" type="text/x-handlebars-template">
+              {{#each objects}}
+              <div class="card sticky-action">
+                <div class="card-image waves-effect waves-block waves-light">
+                  <div class="chip-container">
+                    {{#each recipe.dietLabels}}
+                    <div class="chip">{{this}}</div>
+                    {{/each}}
+                  </div>
+                  <a class="favoritebtn btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">favorite_border</i></a>
+                  <img class="activator" src="{{#tohttps}}{{ recipe.image }}{{/tohttps}}" alt="{{ recipe.label }}">
+                </div>
 
-        <div class="card-action">
-          <a href="{{ recipe.url }}" target="_blank">Procedimiento</a>
-        </div>
-      </div>
-      {{/each}}
-    </script>
+                <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4">{{ recipe.label }}<i class="material-icons right">more_vert</i></span>
+                </div>
 
-    <script id="navbarScore" type="text/x-handlebars-template">
-      <li>
-        <a>
+                <div class="card-reveal">
+
+                  <div class="col s12">
+                    <span class="card-title grey-text text-darken-4">Ingredientes<i class="material-icons right">close</i></span>
+
+                    <table id="ingredients">
+                      <tbody>
+                        {{#each recipe.ingredientLines}}
+                        <tr>
+                          <td>{{this}}</td>
+                        </tr>
+                        {{/each}}
+                      </tbody>
+                    </table>
+
+                    <br>
+
+                    <span class="card-title grey-text text-darken-4">Información Nutricional</span>
+
+                    <table id="totalfacts">
+                      <thead>
+                        <tr>
+                          <th>Dato</th>
+                          <th>Cantidad</th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        {{#each recipe.totalNutrients}}
+                        <tr>
+                          <td>{{this.label}}</td>
+                          <td>{{#integer}}{{ this.quantity }}{{/integer}} {{ this.unit }}</td>
+                        </tr>
+                        {{/each}}
+                      </tbody>
+                    </table>
+
+
+                  </div>
+                </div>
+
+                <div class="card-action">
+                  <a href="{{ recipe.url }}" target="_blank">Procedimiento</a>
+                </div>
+              </div>
+              {{/each}}
+            </script>
+
+            <script id="favorite-list" type="text/x-handlebars-template">
+              {{#each objects}}
+              <div class="card sticky-action">
+
+                <div class="card-image waves-effect waves-block waves-light">
+                  <div class="chip-container">
+                    {{{ dietlabels }}}
+                  </div>
+                  <a class="deletebtn btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">close</i></a>
+                  <img class="activator" src="{{ image }}" alt="{{ label }}">
+                </div>
+
+                <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4">{{{ label }}}</span>
+                </div>
+
+                <div class="card-reveal">
+
+                  <div class="col s12">
+                    <span class="card-title grey-text text-darken-4">Ingredientes<i class="material-icons right">close</i></span>
+
+                    <table id="ingredients">
+                      <tbody>
+                        {{{ ingredients }}}
+                      </tbody>
+                    </table>
+
+                    <br>
+
+                    <span class="card-title grey-text text-darken-4">Información Nutricional</span>
+
+                    <table id="totalfacts">
+                      <thead>
+                        <tr>
+                          <th>Dato</th>
+                          <th>Cantidad</th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        {{{ totalfacts }}}
+                      </tbody>
+                    </table>
+
+
+                  </div>
+                </div>
+
+                <div class="card-action">
+                  <a href="{{ url }}" target="_blank">Procedimiento</a>
+                </div>
+
+              </div>
+              {{/each}}
+            </script>
+
+            <script id="navbarScore" type="text/x-handlebars-template">
+              <li>
+                <a>
           <span class="new badge grey darken-4" data-badge-caption="pts">{{ score }}</span>
         </a>
-      </li>
-    </script>
+              </li>
+            </script>
 
-    <script id="sidenavScore" type="text/x-handlebars-template">
-      <div class="background">
-        <img src="/images/background/background-yummyfind.svg" alt="YummyFind - Background User">
-      </div>
-      <img class="circle" src="{{ level_badge }}" alt="YummyFind - {{ level_status }}">
-      <span class="white-text name">Nv: {{ level_status }}</span>
-      <span class="white-text email">{{ level_quote }}</span>
-    </script>
+            <script id="sidenavScore" type="text/x-handlebars-template">
+              <div class="background">
+                <img src="/images/background/background-yummyfind.svg" alt="YummyFind - Background User">
+              </div>
+              <img class="circle" src="{{ level_badge }}" alt="YummyFind - {{ level_status }}">
+              <span class="white-text name">Nv: {{ level_status }}</span>
+              <span class="white-text email">{{ level_quote }}</span>
+            </script>
 
-    <script type="text/javascript">
-    if('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js')
-        .then(function() {
-          console.log('Service Worker Registered');
-        }).catch(function(err) {
-          console.log("No it didn't. This happened: ", err)
-        });
-      }
-    </script>
+            <script type="text/javascript">
+              if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/sw.js')
+                  .then(function() {
+                    console.log('Service Worker Registered');
+                  }).catch(function(err) {
+                    console.log("No it didn't. This happened: ", err)
+                  });
+              }
+            </script>
 
-  </body>
+</body>
+
 </html>
