@@ -18,6 +18,7 @@ $( document ).ready(function() {
    }).catch(function (e) {
        alert ("Error: " + (e.stack || e));
    });
+
 });
 
 $('#recipe').on('click', '.favoritebtn', function(elem) {
