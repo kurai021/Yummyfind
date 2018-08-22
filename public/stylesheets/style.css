@@ -65,6 +65,10 @@ nav .nav-wrapper .brand-logo img {
   background-color: rgba(33, 33, 33, 0.65) !important;
 }
 
+.admob {
+  padding-bottom: 70px;
+}
+
 .red.wine {
   background-color: #8E151E !important;
 }
