@@ -7,3 +7,6 @@ $('.tabs').tabs();
 $('.modal').modal();
 $('.chips').chips();
 $('.sidenav').sidenav();
+$('.about').sidenav({
+  edge: 'right'
+});
