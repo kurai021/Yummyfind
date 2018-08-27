@@ -117,8 +117,15 @@ nav .nav-wrapper .brand-logo img {
   color: #ffffff;
 }
 
-.sidenav.about img {
+.sidenav.about #logo {
   width: 250px;
+}
+
+.sidenav.about #edamam-badge {
+  position: initial;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /*modal content */
@@ -144,4 +151,15 @@ nav .nav-wrapper .brand-logo img {
   line-height: 25px;
   background-color: #ffffff;
   color: #000000;
+}
+
+.card .card-content ul {
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
+}
+
+.card .card-content ul li {
+  float: left;
+  margin-right: 5px;
 }

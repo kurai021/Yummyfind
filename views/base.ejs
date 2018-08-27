@@ -15,7 +15,10 @@
   <link rel="manifest" href="manifest.json">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" media="screen">
   <link rel="stylesheet" href="client/materialize-css/dist/css/materialize.min.css" media="screen">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/materialize-social.css">
   <link rel='stylesheet' href='/stylesheets/style.css' media="screen" />
+
 </head>
 
 <body>
@@ -54,6 +57,12 @@
 
                 <div class="card-content">
                   <span class="card-title activator grey-text text-darken-4">{{ recipe.label }}<i class="material-icons right">more_vert</i></span>
+                  <ul>
+                    <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ recipe.url }}" class="btn-floating social facebook"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="https://twitter.com/home?status={{ recipe.url }}" class="btn-floating social twitter"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="https://plus.google.com/share?url={{ recipe.url }}" class="btn-floating social google"><i class="fab fa-google-plus-g"></i></a></li>
+                    <li><a href="https://api.whatsapp.com/send?phone=whatsappphonenumber&text={{ recipe.url }}" class="btn-floating social whatsapp"><i class="fab fa-whatsapp"></i></a></li>
+                  </ul>
                 </div>
 
                 <div class="card-reveal">
@@ -93,13 +102,14 @@
                       </tbody>
                     </table>
 
-
                   </div>
                 </div>
 
                 <div class="card-action">
                   <a href="{{ recipe.url }}" target="_blank">Procedimiento</a>
+
                 </div>
+
               </div>
               {{/each}}
             </script>
@@ -118,6 +128,12 @@
 
                 <div class="card-content">
                   <span class="card-title activator grey-text text-darken-4">{{{ label }}}</span>
+                  <ul>
+                    <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ url }}" class="btn-floating social facebook"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="https://twitter.com/home?status={{ url }}" class="btn-floating social twitter"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="https://plus.google.com/share?url={{ url }}" class="btn-floating social google"><i class="fab fa-google-plus-g"></i></a></li>
+                    <li><a href="https://api.whatsapp.com/send?phone=whatsappphonenumber&text={{ url }}" class="btn-floating social whatsapp"><i class="fab fa-whatsapp"></i></a></li>
+                  </ul>
                 </div>
 
                 <div class="card-reveal">
@@ -147,7 +163,6 @@
                         {{{ totalfacts }}}
                       </tbody>
                     </table>
-
 
                   </div>
                 </div>

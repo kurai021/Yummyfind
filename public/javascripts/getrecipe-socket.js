@@ -244,10 +244,9 @@ socket.on("food_response", function(data){
     dismissible: false
   });
 
+  modal_recipe.open();
   $('.progress').hide();
   $('#takePhoto').removeClass("disabled");
-
-  modal_recipe.open();
 
   socket.emit("calculateScoreCamera", yummyfindscore.scorecard().level);
 

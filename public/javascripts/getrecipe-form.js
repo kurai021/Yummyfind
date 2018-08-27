@@ -257,11 +257,11 @@ function getrecipewithform(data){
     dismissible: false
   });
 
-  $('.progress').hide();
-  $('#takePhoto').removeClass("disabled");
-
   searchInput.value = '';
   modal_recipe.open();
+
+  $('.progress').hide();
+  $('#takePhoto').removeClass("disabled");
 
   socket.emit("calculateScoreForm", yummyfindscore.scorecard().level);
 

@@ -1,19 +1,23 @@
 const config = {
-    version: 'v0.10',
+    version: 'v0.0.1',
     precache_urls: [
       'https://fonts.googleapis.com/icon?family=Material+Icons',
+      'https://use.fontawesome.com/releases/v5.2.0/css/all.css',
       '/client/materialize-css/dist/css/materialize.min.css',
+      '/stylesheets/materialize-social.css',
       '/stylesheets/style.css',
       '/client/jquery/dist/jquery.min.js',
       '/client/materialize-css/dist/js/materialize.min.js',
       '/client/handlebars/dist/handlebars.min.js',
+      '/client/dexie/dist/dexie.min.js',
       '/socket.io/socket.io.js',
       '/javascripts/init.js',
       '/javascripts/video.js',
       '/javascripts/getrecipe-socket.js',
       '/javascripts/getrecipe-form.js',
       '/javascripts/score.js',
-      '/javascripts/gamification.js'
+      '/javascripts/gamification.js',
+      '/javascripts/favorite.js'
     ]
   },
   preCacheName = "precache-" + config.version,
