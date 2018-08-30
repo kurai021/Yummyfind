@@ -56,6 +56,10 @@ nav .nav-wrapper .brand-logo img {
   padding-right: 5px;
 }
 
+.range-form {
+  padding-bottom: 20px;
+}
+
 .progress {
   margin: 0px;
   display: none;
