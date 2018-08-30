@@ -31,6 +31,7 @@ window.onload = function(){
     }
   };
 
+  navigator.mediaDevices.getUserMedia(param)
   updateScore();
 
-};
+}
