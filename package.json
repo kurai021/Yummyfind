@@ -17,7 +17,6 @@
     "express": "~4.16.0",
     "express-sslify": "^1.2.0",
     "fs": "0.0.1-security",
-    "google-translate-api": "^2.3.0",
     "handlebars": "^4.0.11",
     "http": "0.0.0",
     "http-errors": "~1.6.2",
