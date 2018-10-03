@@ -74,7 +74,14 @@ io.on("connection", function(socket) {
 
   socket.on('food', function(data) {
 
-    fs.writeFile(socket.id + '.png', data, {encoding: 'base64'});
+    fs.writeFile(socket.id + '.png', data, 'base64', function(err){
+      if(err){
+        console.log(err);
+      }
+      else {
+        console.log("procesando imagen...");
+      }
+    });
 
     var classifier_ids = ["food"];
     var foodRecognition = new VisualRecognitionV3({iam_apikey: "wGzSoa7OKxMHlhohXCF3CVkl74AS6eXBPU5fcoWGG9oU", url: "https://gateway.watsonplatform.net/visual-recognition/api", version: '2018-03-19'});
