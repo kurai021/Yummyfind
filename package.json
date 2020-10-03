@@ -2,6 +2,10 @@
   "name": "yummyfind",
   "version": "3.10.20",
   "private": true,
+  "engines": {
+    "node": "10.x",
+    "npm": "6.x"
+  },
   "scripts": {
     "start": "node ./bin/www"
   },
@@ -13,6 +17,7 @@
     "crypto-js": "^3.1.9-1",
     "debug": "~2.6.9",
     "dexie": "^2.0.4",
+    "dotenv": "^8.2.0",
     "ejs": "~2.5.7",
     "express": "~4.16.0",
     "express-sslify": "^1.2.0",
@@ -28,8 +33,5 @@
     "node-fetch": "^2.6.1",
     "serve-favicon": "^2.5.0",
     "socket.io": "^2.1.1"
-  },
-  "devDependencies": {
-    "dotenv": "^8.2.0"
   }
 }
