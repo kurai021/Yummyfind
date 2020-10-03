@@ -1,3 +1,4 @@
+require("dotenv").config()
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -12,12 +13,12 @@ var fs = require('fs');
 var compression = require('compression');
 var enforce = require('express-sslify');
 
-/*var options = {
+var options = {
   key: fs.readFileSync('server.key'),
   cert: fs.readFileSync('server.crt'),
   requestCert: false,
   rejectUnauthorized: false
-};*/
+};
 
 var app = express();
 app.use(compression());
@@ -25,8 +26,8 @@ app.use(enforce.HTTPS({
   trustProtoHeader: true
 }))
 
-//var server = require('https').Server(options, app);
-var server = require('http').Server(app);
+var server = require('https').Server(options, app);
+//var server = require('http').Server(app);
 var io = require("socket.io")(server);
 
 // view engine setup

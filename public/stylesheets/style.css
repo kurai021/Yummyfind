@@ -30,6 +30,7 @@ nav .nav-wrapper .brand-logo img {
 }
 
 .videoContainer {
+  display: none;
   position: absolute;
   height: 100%;
   width: 100%;
@@ -57,6 +58,7 @@ nav .nav-wrapper .brand-logo img {
 }
 
 .range-form {
+  display: none;
   padding-bottom: 20px;
 }
 
@@ -69,12 +71,14 @@ nav .nav-wrapper .brand-logo img {
   background-color: rgba(33, 33, 33, 0.65) !important;
 }
 
-.admob {
-  padding-bottom: 55px;
-}
-
 .red.wine {
   background-color: #8E151E !important;
+}
+
+.footer {
+  bottom: 0;
+  position: fixed;
+  width: 100%;
 }
 
 .tabs {
