@@ -37,7 +37,7 @@ function start(io) {
 
               resFood = res.result.images[0].classifiers[0].classes[0].class.replace(/-/g, ' ');
 
-              fetch("https://test-es.edamam.com/search?q=" + resFood + "&app_id=" + process.env.EDAMAMID + "&app_key=" + process.env.EDAMAMKEY)
+              fetch("https://kurai021-cors-anywhere.herokuapp.com/https://test-es.edamam.com/search?q=" + resFood + "&app_id=" + process.env.EDAMAMID + "&app_key=" + process.env.EDAMAMKEY)
                 .then((res) => {
                   return res.json()
                 })
@@ -64,7 +64,7 @@ function start(io) {
 
         socket.on('foodForm',function(data){
 
-          fetch("https://test-es.edamam.com/search?q=" + data + "&app_id=" + process.env.EDAMAMID + "&app_key=" + process.env.EDAMAMKEY)
+          fetch("https://kurai021-cors-anywhere.herokuapp.com/https://test-es.edamam.com/search?q=" + data + "&app_id=" + process.env.EDAMAMID + "&app_key=" + process.env.EDAMAMKEY)
                 .then((res) => {
                   return res.json()
                 })
