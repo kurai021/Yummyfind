@@ -10,7 +10,7 @@ YummyFind es una herramienta que permite encontrar miles de recetas de cocina co
 **VISUALRECOGURL**,
 **EDAMAMID** y
 **EDAMAMKEY**
-Las primeras dos corresponden al api key y url de tu instancia privada de [Watson Visual Recognition]("https://cloud.ibm.com/apidocs/visual-recognition/visual-recognition-v3") y las dos últimas a tu ID y key para accesar al [API de Edamam en español]("https://test-es.edamam.com/")
+Las primeras dos corresponden al api key y url de tu instancia privada de [Watson Visual Recognition]("https://cloud.ibm.com/apidocs/visual-recognition/visual-recognition-v3") y las dos últimas a tu ID y key para accesar al [API de Edamam en español]("https://test-es.edamam.com")
 - Si estás trabajando en localhost, descomenta las líneas 16-21 y 29 en app.js, comenta la línea 30
 - Instala las dependencias con npm y ejecuta npm start para correr Express
 
