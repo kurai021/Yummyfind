@@ -4,6 +4,10 @@
   border: 0;
 }
 
+body, .sidenav {
+  background-color: #e6e7ee;
+}
+
 body {
   display: flex;
   min-height: 100vh;
