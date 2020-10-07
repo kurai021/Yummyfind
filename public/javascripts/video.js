@@ -4,8 +4,15 @@ var video = document.getElementById("webcamfeed"); //the video
 var takePhoto = document.getElementById("takePhoto"); //the button
 var photosource = document.getElementById("photo-source"); //the canvas
 
-photosource.width = 720;
+photosource.width = 640;
 photosource.height = 480;
+
+var param = {
+  audio:false,
+  video: {
+    facingMode:{ideal: "environment"}
+  }
+};
 
 takePhoto.ontouchend = function(){
   $('.progress').show();
@@ -24,18 +31,17 @@ takePhoto.ontouchend = function(){
 document.getElementById("searchTab").ontouchend = function(){
   document.querySelector(".videoContainer").style.display ="none"
   document.querySelector(".range-form").style.display = "none"
+
+  navigator.mediaDevices.getUserMedia(param)
+    .then(async stream => {
+      var track = stream.getVideoTracks()[0];
+      track.forEach(track => track.stop())
+    })
 }
 
 document.getElementById("cameraTab").ontouchend = function(){
   document.querySelector(".videoContainer").style.display = "block"
   document.querySelector(".range-form").style.display = "block"
-
-  var param = {
-    audio:false,
-    video: {
-      facingMode:{ideal: "environment"}
-    }
-  };
 
   navigator.mediaDevices.getUserMedia(param)
     .then(async stream => {

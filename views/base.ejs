@@ -21,10 +21,14 @@
 
 </head>
 
-<body>
-  <%- include("partials/home/navbar") -%>
+<body class="neumorphic">
   <%- include("partials/home/sidenav") -%>
-  <%- include("partials/home/canvas") -%>
+
+  <div class="content">
+    <%- include("partials/home/navbar") -%>
+    <%- include("partials/home/canvas") -%>
+    <%- include("partials/home/footer") -%>
+  </div>
   <%- include("partials/home/modal") -%>
 
             <script src="client/jquery/dist/jquery.min.js" charset="utf-8"></script>
