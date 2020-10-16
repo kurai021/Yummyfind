@@ -19,6 +19,10 @@ nav {
   box-shadow: none;
 }
 
+.content {
+  position: fixed;
+}
+
 nav .sidenav-trigger {
   background-color: #902923;
   box-shadow: -5px -5px 10px #7a231e, 5px 5px 10px #a62f28;
@@ -68,6 +72,7 @@ nav .nav-wrapper .brand-logo img {
   margin-left: auto;
   margin-right: auto;
   border-radius: 15px;
+  margin-left: 10px;
 }
 
 .videoContainer #webcamfeed {

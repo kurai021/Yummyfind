@@ -5,20 +5,20 @@ $( document ).ready(function() {
      recipes: "++id,image,label,ingredients,totalfacts,dietlabels,url"
    });
 
-   db.recipes.toArray().then(function (myFavoriteRecipes){
-     var favorite_source = $("#favorite-list").html();
-     var favorite_template = Handlebars.compile(favorite_source);
-     var wrapper = {objects: myFavoriteRecipes};
-     console.log(wrapper);
+  db.recipes.toArray()
+    .then(function (myFavoriteRecipes){
+      var favorite_source = $("#favorite-list").html();
+      var favorite_template = Handlebars.compile(favorite_source);
+      var wrapper = {objects: myFavoriteRecipes};
+      console.log(wrapper);
 
-     var favorites = favorite_template(wrapper);
-     var favorite_container = $("#favorite_container");
-     favorite_container.html(favorites);
+      var favorites = favorite_template(wrapper);
+      var favorite_container = $("#favorite_container");
+      favorite_container.html(favorites);
 
-   }).catch(function (e) {
-       alert ("Error: " + (e.stack || e));
-   });
-
+    }).catch(function (e) {
+      alert ("Error: " + (e.stack || e));
+    });
 });
 
 $('#recipe').on('click', '.favoritebtn', function(elem) {

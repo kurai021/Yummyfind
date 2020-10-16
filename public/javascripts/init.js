@@ -1,12 +1,33 @@
 var socket = io.connect();
 
-var app_id = "0fff2101";
-var app_key = "bd0bfdcb16a04cbedd6edb90bb76965f";
+document.addEventListener('DOMContentLoaded', function() {
+  var tabs = document.querySelector(".tabs")
+  var tabsInstance = M.Tabs.init(tabs);
 
-$('.tabs').tabs();
-$('.modal').modal();
-$('.chips').chips();
-$('.sidenav').sidenav();
-$('.about').sidenav({
-  edge: 'right'
+  var sidenavMenu = document.querySelectorAll('.sidenav');
+  var sidenavMenuInstance = M.Sidenav.init(sidenavMenu, {
+    onOpenEnd: function(){
+      document.querySelector(".content").style.left = "300px"
+    },
+    onCloseEnd: function(){
+      document.querySelector(".content").style.left = "0px"
+    }
+  });
+
+  var sidenavAbout = document.querySelectorAll('.about');
+  var sidenavAboutInstance = M.Sidenav.init(sidenavAbout, {
+    edge: "right"
+  });
+
+  var modals = document.querySelectorAll('.modal');
+  var modalsInstance = M.Modal.init(modals);
+
+  var infoChips = document.querySelectorAll('.chip');
+  var infoChipsInstance = M.Chips.init(infoChips, {
+    placeholder: ""
+  });
 });
+
+
+
+
